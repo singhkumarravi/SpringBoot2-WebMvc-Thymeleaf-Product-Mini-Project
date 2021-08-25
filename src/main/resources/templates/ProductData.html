@@ -1,0 +1,49 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.mi
+n.css"/>
+<h1>Show Data </h1>
+<table border="1">
+<pre>
+<tr>
+<th>PRODID</th>
+<th>PRODCODE</th>
+<th>PRODCOST</th>
+<th>PRODGST</th>
+<th>PRODDISCOUNT</th>
+<th>PRODVENDOR</th>
+<th>NOTE</th>
+<th>OPERATION</th>
+</tr>
+<tr th:each="ob:${list}">
+<td th:text="${ob.prodId}"></td>
+<td th:text="${ob.prodCode}"></td>
+<td th:text="${ob.prodCost}"></td>
+<td th:text="${ob.prodGst}"></td>
+<td th:text="${ob.ProdDiscount}"></td>
+<td th:text="${ob.prodVendor}"></td>
+<td th:text="${ob.note}"></td>
+<td >
+<a th:href="@{/delete(id=${ob.prodId})}">DELETE</a>
+<a th:href="@{/edit(id=${ob.prodId})}">EDIT</a>
+</td>
+</tr>
+</pre>
+</table>
+
+
+<li th:if="${page.hasNext()}">
+<a th:href="@{/allData(page=${page.number+1})}">Next Page</a>
+</li>
+<li  th:if="${page.hasPrevious()}">
+<a th:href="@{/allData(page=${page.number-1})}">Previous Page</a>
+</li>
+<li th:if="${!page.isFirst}">
+<a th:href="@{/allData(page=0)}">First Page</a>
+</li>
+<li th:if="${!page.isLast}">
+<a th:href="@{/allData(page=${page.totalPages-1})}">Last Page</a>
+</li>
+
+<li th:text="${page}"></li>
+</html>

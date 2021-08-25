@@ -1,0 +1,21 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<h3>Product Registration From </h3>
+<body>
+<form th:action="@{/update}" method="post" th:object="${prod}">
+<pre>
+Product ID    :<input type="text" th:field="*{prodId}" readonly="readonly"/>
+Product Code  : <input type="text" th:field="*{prodCode}" readonly="readonly"/>
+Product Cost  : <input type="text" th:field="*{prodCost}"/> 
+
+Product Vendor :
+<select th:field="*{prodVendor}">
+<option value="">-SELECT-</option>
+<option value="NIT">NIT</option>
+<option value="ORACL">ORACLE</option>
+</select>
+Note :<textarea th:field="*{note}"></textarea>
+<input type="submit" value="update"/>
+</pre>
+</form>
+</body>
+</html>
